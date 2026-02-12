@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: 'https://fresh-mart-backend.onrender.com',
 });
 
 // Add a request interceptor to add the auth token to every request
