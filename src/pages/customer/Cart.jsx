@@ -42,7 +42,7 @@ const Cart = () => {
                     <AnimatePresence>
                         {cartItems.map((item) => (
                             <motion.div
-                                key={item.id}
+                                key={item._id}
                                 layout
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -55,20 +55,20 @@ const Cart = () => {
 
                                 <div className="flex-1 text-center sm:text-left">
                                     <span className="text-primary-600 text-[8px] md:text-[10px] font-black uppercase tracking-widest mb-1 block underline decoration-2 md:decoration-4 underline-offset-2 md:underline-offset-4">{item.category}</span>
-                                    <Link to={`/product/${item.id}`} className="text-base md:text-xl font-black text-gray-900 hover:text-primary-600 transition-colors block mb-1 tracking-tight">{item.name}</Link>
+                                    <Link to={`/product/${item._id}`} className="text-base md:text-xl font-black text-gray-900 hover:text-primary-600 transition-colors block mb-1 tracking-tight">{item.name}</Link>
                                     <p className="text-gray-400 text-[10px] md:text-sm font-bold uppercase tracking-wider">{item.unit}</p>
                                 </div>
 
                                 <div className="flex items-center bg-gray-50 p-1 md:p-1.5 rounded-xl md:rounded-2xl border border-gray-100">
                                     <button
-                                        onClick={() => updateQuantity(item.id, Math.max(1, item.cartQuantity - 1))}
+                                        onClick={() => updateQuantity(item._id, Math.max(1, item.cartQuantity - 1))}
                                         className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-lg md:rounded-xl shadow-sm flex items-center justify-center text-gray-400 hover:text-primary-600 active:scale-90 transition-all"
                                     >
                                         <Minus className="w-3 h-3 md:w-4 md:h-4" />
                                     </button>
                                     <span className="w-8 md:w-12 text-center font-black text-gray-900 text-sm md:text-base">{item.cartQuantity}</span>
                                     <button
-                                        onClick={() => updateQuantity(item.id, item.cartQuantity + 1)}
+                                        onClick={() => updateQuantity(item._id, item.cartQuantity + 1)}
                                         className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-lg md:rounded-xl shadow-sm flex items-center justify-center text-gray-400 hover:text-primary-600 active:scale-90 transition-all"
                                     >
                                         <Plus className="w-3 h-3 md:w-4 md:h-4" />
@@ -78,7 +78,7 @@ const Cart = () => {
                                 <div className="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto mt-2 sm:mt-0 px-2 lg:px-0">
                                     <p className="text-lg md:text-2xl font-black text-gray-900">₹{(item.price * item.cartQuantity).toFixed(2)}</p>
                                     <button
-                                        onClick={() => removeFromCart(item.id)}
+                                        onClick={() => removeFromCart(item._id)}
                                         className="text-gray-300 hover:text-red-500 transition-colors p-2"
                                     >
                                         <Trash2 className="w-4 h-4 md:w-5 md:h-5" />
@@ -87,6 +87,14 @@ const Cart = () => {
                             </motion.div>
                         ))}
                     </AnimatePresence>
+                    {/* Continued Shopping Button */}
+                    <button
+                        onClick={() => navigate('/shop')}
+                        className="w-full md:w-auto px-8 py-4 bg-white border-2 border-primary-600 text-primary-600 hover:bg-primary-50 rounded-2xl font-bold transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 mt-4 lg:mt-0"
+                    >
+                        <ArrowRight className="w-5 h-5 rotate-180" />
+                        <span>Add More Items</span>
+                    </button>
                 </div>
 
                 {/* Order Summary */}
@@ -124,7 +132,7 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
