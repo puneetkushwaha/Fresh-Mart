@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# This is an educational project for learning full-stack development.
+# No sensitive data is collected for malicious purposes.
+Sitemap: https://fresh-mart-iota.vercel.app/sitemap.xml
