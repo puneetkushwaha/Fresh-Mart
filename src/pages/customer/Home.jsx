@@ -121,7 +121,7 @@ const Home = () => {
     return (
         <div className="bg-white">
             {/* Hero Section */}
-            <section className="relative min-h-[580px] flex items-center overflow-hidden bg-gray-900">
+            <section className="relative min-h-[400px] md:min-h-[580px] flex items-center overflow-hidden bg-gray-900">
                 {/* Visual Elements */}
                 <div className="absolute inset-0 z-0">
                     <img
@@ -134,55 +134,56 @@ const Home = () => {
                     <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent" />
                 </div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+                    <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="text-center lg:text-left"
                         >
-                            <span className="inline-flex items-center px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-primary-400 font-black text-xs tracking-[0.2em] uppercase mb-8 backdrop-blur-md">
+                            <span className="inline-flex items-center px-4 py-2 bg-primary-500/10 border border-primary-500/20 rounded-full text-primary-400 font-black text-[10px] md:text-xs tracking-[0.2em] uppercase mb-6 md:mb-8 backdrop-blur-md">
                                 <Zap className="w-4 h-4 mr-2" />
                                 Instant Delivery in 30 Mins
                             </span>
-                            <h1 className="text-6xl md:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tight">
+                            <h1 className="text-4xl md:text-7xl font-black text-white mb-6 md:mb-8 leading-[1.1] tracking-tight">
                                 Freshness <br />
                                 <span className="text-primary-500 italic">Delivered.</span>
                             </h1>
-                            <p className="text-xl text-gray-400 mb-12 leading-relaxed font-medium max-w-lg">
+                            <p className="text-lg md:text-xl text-gray-400 mb-8 md:mb-12 leading-relaxed font-medium max-w-lg mx-auto lg:mx-0">
                                 Experience the finest organic produce and everyday essentials sourced directly from farms to your table.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row gap-6">
+                            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center lg:justify-start">
                                 <button
                                     onClick={() => navigate('/shop')}
-                                    className="px-10 py-5 bg-primary-600 hover:bg-primary-700 text-white rounded-[2rem] font-black text-lg flex items-center justify-center space-x-3 transition-all shadow-2xl shadow-primary-500/30 hover:scale-105 active:scale-95"
+                                    className="px-8 md:px-10 py-4 md:py-5 bg-primary-600 hover:bg-primary-700 text-white rounded-[2rem] font-black text-base md:text-lg flex items-center justify-center space-x-3 transition-all shadow-2xl shadow-primary-500/30 hover:scale-105 active:scale-95"
                                 >
                                     <span>Start Shopping</span>
-                                    <ArrowRight className="w-6 h-6" />
+                                    <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
                                 </button>
-                                <button className="px-10 py-5 bg-white/5 hover:bg-white/10 text-white rounded-[2rem] font-black text-lg border-2 border-white/10 backdrop-blur-xl transition-all flex items-center justify-center space-x-3 group">
-                                    <Play className="w-5 h-5 fill-current transition-transform group-hover:scale-110" />
+                                <button className="px-8 md:px-10 py-4 md:py-5 bg-white/5 hover:bg-white/10 text-white rounded-[2rem] font-black text-base md:text-lg border-2 border-white/10 backdrop-blur-xl transition-all flex items-center justify-center space-x-3 group">
+                                    <Play className="w-4 h-4 md:w-5 md:h-5 fill-current transition-transform group-hover:scale-110" />
                                     <span>How it Works</span>
                                 </button>
                             </div>
 
-                            <div className="mt-16 flex items-center space-x-8">
-                                <div className="flex -space-x-4">
+                            <div className="mt-12 md:mt-16 flex items-center justify-center lg:justify-start space-x-6 md:space-x-8">
+                                <div className="flex -space-x-3 md:-space-x-4">
                                     {[1, 2, 3, 4].map(i => (
-                                        <div key={i} className="w-12 h-12 rounded-full border-4 border-gray-900 overflow-hidden bg-gray-800">
+                                        <div key={i} className="w-10 h-10 md:w-12 md:h-12 rounded-full border-4 border-gray-900 overflow-hidden bg-gray-800">
                                             <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="user" />
                                         </div>
                                     ))}
-                                    <div className="w-12 h-12 rounded-full border-4 border-gray-900 bg-primary-600 flex items-center justify-center text-white font-black text-xs">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-4 border-gray-900 bg-primary-600 flex items-center justify-center text-white font-black text-[10px]">
                                         5k+
                                     </div>
                                 </div>
-                                <div>
+                                <div className="text-left">
                                     <div className="flex text-yellow-400 mb-1">
-                                        {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-4 h-4 fill-current" />)}
+                                        {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-current" />)}
                                     </div>
-                                    <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Trust by 5000+ Happy Customers</p>
+                                    <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Trust by 5000+ Customers</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -226,14 +227,14 @@ const Home = () => {
             </section>
 
             {/* Categories Grid */}
-            <section className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <section className="py-16 md:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
                     <div className="max-w-xl">
-                        <span className="text-primary-600 font-black text-xs uppercase tracking-[0.3em] mb-4 block">Our Departments</span>
-                        <h2 className="text-5xl font-black text-gray-900 mb-6 tracking-tight">Shop by Category</h2>
-                        <p className="text-gray-500 text-lg">Explore our curated selection of fresh goods from top local producers.</p>
+                        <span className="text-primary-600 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] mb-3 md:mb-4 block">Our Departments</span>
+                        <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 md:mb-6 tracking-tight">Shop by Category</h2>
+                        <p className="text-gray-500 text-base md:text-lg">Explore our curated selection of fresh goods from top local producers.</p>
                     </div>
-                    <button onClick={() => navigate('/shop')} className="inline-flex items-center space-x-3 text-primary-600 font-black hover:text-primary-700 transition-colors group px-6 py-3 bg-primary-50 rounded-2xl">
+                    <button onClick={() => navigate('/shop')} className="inline-flex items-center justify-center space-x-3 text-primary-600 font-black hover:text-primary-700 transition-colors group px-6 py-3 bg-primary-50 rounded-2xl w-fit">
                         <span>Explore All</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </button>
@@ -286,24 +287,24 @@ const Home = () => {
             </section>
 
             {/* Features Banner */}
-            <section className="pb-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-gray-900 rounded-[4rem] p-12 md:p-24 relative overflow-hidden">
+            <section className="pb-16 md:pb-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="bg-gray-900 rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-24 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-1/2 h-full bg-primary-600/10 blur-[150px] rounded-full" />
                     <div className="absolute bottom-0 left-0 w-1/2 h-full bg-green-600/5 blur-[150px] rounded-full" />
 
-                    <div className="relative grid md:grid-cols-3 gap-20">
+                    <div className="relative grid md:grid-cols-3 gap-12 md:gap-20">
                         {[
                             { icon: Zap, label: 'Fast Delivery', desc: 'Get your goods in 30 minutes', color: 'primary' },
                             { icon: ShieldCheck, label: 'Quality Assured', desc: 'Sourced from local farms', color: 'green' },
                             { icon: Clock, label: '24/7 Support', desc: 'Always here to help you', color: 'yellow' }
                         ].map((feature, i) => (
-                            <div key={i} className="flex flex-col items-center text-center space-y-8">
-                                <div className={`w-24 h-24 bg-${feature.color}-600/20 rounded-[2rem] flex items-center justify-center border border-${feature.color}-500/20`}>
-                                    <feature.icon className={`w-12 h-12 text-${feature.color}-500`} />
+                            <div key={i} className="flex flex-col items-center text-center space-y-6 md:space-y-8">
+                                <div className={`w-16 h-16 md:w-24 md:h-24 bg-${feature.color}-600/20 rounded-2xl md:rounded-[2rem] flex items-center justify-center border border-${feature.color}-500/20`}>
+                                    <feature.icon className={`w-8 h-8 md:w-12 md:h-12 text-${feature.color}-500`} />
                                 </div>
-                                <div className="space-y-4">
-                                    <h3 className="text-3xl font-black text-white tracking-tight">{feature.label}</h3>
-                                    <p className="text-gray-400 leading-relaxed font-medium text-lg">
+                                <div className="space-y-2 md:space-y-4">
+                                    <h3 className="text-xl md:text-3xl font-black text-white tracking-tight">{feature.label}</h3>
+                                    <p className="text-gray-400 leading-relaxed font-medium text-sm md:text-lg">
                                         {feature.desc}
                                     </p>
                                 </div>
@@ -314,13 +315,13 @@ const Home = () => {
             </section>
 
             {/* Featured Products */}
-            <section className="pb-32 bg-gray-50/50 py-32 px-4 sm:px-6 lg:px-8">
+            <section className="pb-16 md:pb-32 bg-gray-50/50 py-16 md:py-32 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-6">
                         <div className="max-w-xl">
-                            <span className="text-primary-600 font-black text-xs uppercase tracking-[0.3em] mb-4 block">Trending Now</span>
-                            <h2 className="text-5xl font-black text-gray-900 mb-6 tracking-tight">Best Sellers</h2>
-                            <p className="text-gray-500 text-lg">Our most loved products this week, picked for premium quality.</p>
+                            <span className="text-primary-600 font-black text-[10px] md:text-xs uppercase tracking-[0.3em] mb-4 block">Trending Now</span>
+                            <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-4 md:mb-6 tracking-tight">Best Sellers</h2>
+                            <p className="text-gray-500 text-base md:text-lg">Our most loved products this week, picked for premium quality.</p>
                         </div>
                         <div className="flex space-x-4">
                             <button
@@ -354,10 +355,10 @@ const Home = () => {
                                 {featuredProducts.map((product) => (
                                     <motion.div
                                         key={product._id}
-                                        className="min-w-[calc(100%-0rem)] sm:min-w-[calc(50%-1.25rem)] lg:min-w-[calc(33.333%-1.7rem)] xl:min-w-[calc(25%-1.9rem)] group"
+                                        className="min-w-[calc(50%-0.625rem)] sm:min-w-[calc(50%-1.25rem)] lg:min-w-[calc(33.333%-1.7rem)] xl:min-w-[calc(25%-1.9rem)] group"
                                         whileHover={{ y: -12 }}
                                     >
-                                        <div className="bg-white rounded-[3rem] border border-gray-100 shadow-sm overflow-hidden group hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] hover:border-primary-100 transition-all duration-700 h-full">
+                                        <div className="bg-white rounded-2xl md:rounded-[3rem] border border-gray-100 shadow-sm overflow-hidden group hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] hover:border-primary-100 transition-all duration-700 h-full">
                                             <div className="relative aspect-[1/1] overflow-hidden bg-gray-50">
                                                 <img
                                                     src={product.image}
@@ -365,34 +366,35 @@ const Home = () => {
                                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                                                 />
                                                 {product.discount > 0 && (
-                                                    <div className="absolute top-6 left-6 bg-red-500 text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-2xl shadow-xl shadow-red-500/30">
-                                                        Save {product.discount}%
+                                                    <div className="absolute top-3 left-3 md:top-6 md:left-6 bg-red-500 text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest px-2 md:px-4 py-1 md:py-2 rounded-lg md:rounded-2xl shadow-xl shadow-red-500/30">
+                                                        -{product.discount}%
                                                     </div>
                                                 )}
                                             </div>
 
-                                            <div className="p-10">
-                                                <span className="text-primary-600 text-[10px] font-black uppercase tracking-[0.2em] mb-3 block">{product.category}</span>
+                                            <div className="p-4 md:p-10">
+                                                <span className="text-primary-600 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] mb-1 md:mb-3 block underline decoration-2 md:decoration-4 underline-offset-2 md:underline-offset-4">{product.category}</span>
                                                 <Link to={`/product/${product._id}`}>
-                                                    <h3 className="text-xl font-black text-gray-900 mb-4 group-hover:text-primary-600 transition-colors line-clamp-1 tracking-tight">{product.name}</h3>
+                                                    <h3 className="text-sm md:text-xl font-black text-gray-900 mb-2 md:mb-4 group-hover:text-primary-600 transition-colors line-clamp-1 tracking-tight">{product.name}</h3>
                                                 </Link>
-                                                <div className="flex items-center space-x-2 mb-8">
+                                                <div className="hidden md:flex items-center space-x-2 mb-8">
                                                     <div className="flex text-yellow-400">
                                                         {[...Array(5)].map((_, i) => <Star key={i} className={`w-3.5 h-3.5 ${i < Math.floor(product.rating) ? 'fill-current' : ''}`} />)}
                                                         <span className="text-xs font-black text-gray-700 ml-2">{product.rating}</span>
                                                     </div>
                                                 </div>
 
-                                                <div className="flex items-center justify-between pt-6 border-t border-gray-50">
+                                                <div className="flex flex-col md:flex-row md:items-center justify-between pt-3 md:pt-6 border-t border-gray-50 gap-3">
                                                     <div>
-                                                        <span className="text-3xl font-black text-gray-900">₹{product.price - (product.price * product.discount / 100)}</span>
-                                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">{product.unit}</p>
+                                                        <span className="text-base md:text-3xl font-black text-gray-900">₹{product.price - (product.price * product.discount / 100)}</span>
+                                                        <p className="text-[8px] md:text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-0.5 md:mt-1">{product.unit}</p>
                                                     </div>
                                                     <button
                                                         onClick={() => addToCart(product)}
-                                                        className="w-14 h-14 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl flex items-center justify-center transition-all shadow-xl shadow-primary-500/20 active:scale-90"
+                                                        className="w-full md:w-14 h-10 md:h-14 bg-primary-600 hover:bg-primary-700 text-white rounded-xl md:rounded-2xl flex items-center justify-center transition-all shadow-xl shadow-primary-500/20 active:scale-90"
                                                     >
-                                                        <ShoppingBag className="w-6 h-6" />
+                                                        <ShoppingBag className="w-4 h-4 md:w-6 md:h-6" />
+                                                        <span className="md:hidden ml-2 text-xs font-black uppercase">Add</span>
                                                     </button>
                                                 </div>
                                             </div>

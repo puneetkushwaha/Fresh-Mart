@@ -88,7 +88,7 @@ const Navbar = () => {
 
                         <button
                             onClick={() => navigate('/cart')}
-                            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gray-50 hover:bg-gray-100 transition-all relative group"
+                            className="hidden sm:flex items-center space-x-2 px-4 py-2 rounded-xl bg-gray-50 hover:bg-gray-100 transition-all relative group"
                         >
                             <ShoppingCart className="w-5 h-5 text-gray-700 group-hover:text-primary-600" />
                             <span className="text-sm font-medium text-gray-700 group-hover:text-primary-600">Cart</span>
@@ -98,6 +98,13 @@ const Navbar = () => {
                                 </span>
                             )}
                         </button>
+
+                        {/* Mobile Header Icons (Minimal) */}
+                        <div className="flex md:hidden items-center space-x-2">
+                            <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 font-bold border border-primary-200">
+                                {userInfo?.name?.charAt(0) || <User className="w-5 h-5" />}
+                            </div>
+                        </div>
 
                         {/* Mobile Menu Button */}
                         <button
@@ -110,13 +117,13 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Search - Visible only on mobile */}
-                <div className="md:hidden py-4">
-                    <div className="relative group">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <div className="md:hidden pb-4">
+                    <div className="relative group px-1">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
                         <input
                             type="text"
-                            placeholder="Search groceries..."
-                            className="w-full bg-gray-50 pl-12 pr-4 py-2.5 rounded-xl border border-transparent focus:ring-2 focus:ring-primary-500 focus:bg-white focus:border-transparent transition-all outline-none text-sm"
+                            placeholder="Search fresh groceries..."
+                            className="w-full bg-gray-50 pl-10 pr-4 py-2 rounded-xl border border-transparent focus:ring-2 focus:ring-primary-500 focus:bg-white focus:border-transparent transition-all outline-none text-xs"
                         />
                     </div>
                 </div>
