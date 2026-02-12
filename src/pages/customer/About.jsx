@@ -5,7 +5,7 @@ const About = () => {
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="text-center mb-16">
-                <h1 className="text-4xl font-black text-gray-900 mb-4">About FreshMart</h1>
+                <h1 className="text-4xl font-black text-gray-900 mb-4">About Martify</h1>
                 <p className="text-gray-500 max-w-2xl mx-auto text-lg">
                     We're on a mission to deliver the freshest, highest quality groceries directly from local farms where possible, right to your doorstep.
                 </p>
@@ -22,7 +22,7 @@ const About = () => {
                 <div className="space-y-6">
                     <h2 className="text-3xl font-bold text-gray-900">Our Story</h2>
                     <p className="text-gray-600 leading-relaxed">
-                        Founded in 2024, FreshMart started with a simple idea: grocery shopping should be easy, transparent, and fresh. We noticed that meaningful connection between farmers and consumers was missing in the modern retail landscape.
+                        Founded in 2024, Martify started with a simple idea: grocery shopping should be easy, transparent, and fresh. We noticed that meaningful connection between farmers and consumers was missing in the modern retail landscape.
                     </p>
                     <p className="text-gray-600 leading-relaxed">
                         Today, we serve thousands of families, ensuring that they have access to nutritious food without the hassle of crowded supermarkets.

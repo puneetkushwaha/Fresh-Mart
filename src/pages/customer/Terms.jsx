@@ -11,10 +11,10 @@ const Terms = () => {
                 <p>By accessing or using our website, you agree to be bound by these Terms of Service and all applicable laws and regulations.</p>
 
                 <h3 className="text-gray-900 font-bold text-xl mt-8 mb-4">2. Use License</h3>
-                <p>Permission is granted to temporarily download one copy of the materials (information or software) on FreshMart's website for personal, non-commercial transitory viewing only.</p>
+                <p>Permission is granted to temporarily download one copy of the materials (information or software) on Martify's website for personal, non-commercial transitory viewing only.</p>
 
                 <h3 className="text-gray-900 font-bold text-xl mt-8 mb-4">3. Disclaimer</h3>
-                <p>The materials on FreshMart's website are provided on an 'as is' basis. FreshMart makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                <p>The materials on Martify's website are provided on an 'as is' basis. Martify makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
             </div>
         </div>
     );

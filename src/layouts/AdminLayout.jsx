@@ -35,7 +35,7 @@ const AdminLayout = () => {
             <aside className={`bg-white border-r border-gray-100 transition-all duration-300 z-50 fixed lg:relative flex flex-col h-screen ${isSidebarOpen ? 'w-72' : 'w-20'}`}>
                 <div className="h-20 flex items-center justify-between px-6 border-b border-gray-50">
                     <div className={`font-black text-2xl bg-gradient-to-r from-primary-600 to-green-500 bg-clip-text text-transparent truncate transition-opacity duration-300 ${isSidebarOpen ? 'opacity-100' : 'opacity-0'}`}>
-                        FreshMart Admin
+                        Martify Admin
                     </div>
                     <button onClick={() => setSidebarOpen(!isSidebarOpen)} className="p-2 text-gray-400 hover:text-primary-600 transition-colors">
                         {isSidebarOpen ? <X className="lg:hidden w-6 h-6" /> : <Menu className="w-6 h-6" />}

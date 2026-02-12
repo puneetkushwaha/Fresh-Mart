@@ -64,7 +64,7 @@ const ProductDetails = () => {
             if (navigator.share) {
                 await navigator.share({
                     title: product.name,
-                    text: `Check out this ${product.name} on FreshMart!`,
+                    text: `Check out this ${product.name} on Martify!`,
                     url: window.location.href,
                 });
             } else {

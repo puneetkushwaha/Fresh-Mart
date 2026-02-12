@@ -28,7 +28,7 @@ const Footer = () => {
                     <div className="space-y-6">
                         <Link to="/" className="flex items-center space-x-2">
                             <span className="text-3xl font-black bg-gradient-to-r from-primary-400 to-green-400 bg-clip-text text-transparent">
-                                FreshMart
+                                Martify
                             </span>
                         </Link>
                         <p className="text-gray-400 leading-relaxed font-light mt-4">
@@ -125,7 +125,7 @@ const Footer = () => {
                 <div className="border-t border-white/5 pt-10 mt-10">
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                         <p className="text-gray-500 text-sm font-light">
-                            © 2026 <span className="text-white font-bold">FreshMart</span>. All rights reserved.
+                            © 2026 <span className="text-white font-bold">Martify</span>. All rights reserved.
                             <span className="mx-2">|</span>
                             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                             <span className="mx-2">|</span>

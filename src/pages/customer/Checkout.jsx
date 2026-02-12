@@ -391,7 +391,7 @@ const Checkout = () => {
                                             <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-6 ml-12 space-y-6">
                                                 <div className="bg-white p-4 rounded-2xl border border-gray-100 flex flex-col md:flex-row items-center gap-6">
                                                     <div className="bg-white p-2 rounded-xl border border-dashed border-gray-300">
-                                                        <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=7380663685@airtel&pn=FreshMart&am=${finalTotal}&cu=INR`} alt="Payment QR Code" className="w-32 h-32" />
+                                                        <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=7380663685@airtel&pn=Martify&am=${finalTotal}&cu=INR`} alt="Payment QR Code" className="w-32 h-32" />
                                                     </div>
                                                     <div className="flex-1 space-y-2 text-center md:text-left">
                                                         <p className="font-bold text-gray-900">Scan to Pay</p>

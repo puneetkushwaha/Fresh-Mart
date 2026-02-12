@@ -411,7 +411,7 @@ const Home = () => {
                     <div className="text-center mb-24 max-w-2xl mx-auto">
                         <span className="text-primary-600 font-black text-xs uppercase tracking-[0.3em] mb-4 block underline decoration-4 underline-offset-8">Community Voice</span>
                         <h2 className="text-5xl font-black text-gray-900 mb-6 tracking-tight">What Our Customers Say</h2>
-                        <p className="text-gray-500 text-xl font-medium">Join thousands of happy families who trust FreshMart for their daily meals.</p>
+                        <p className="text-gray-500 text-xl font-medium">Join thousands of happy families who trust Martify for their daily meals.</p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-12 relative z-10">
