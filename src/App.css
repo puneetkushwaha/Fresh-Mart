@@ -29,10 +29,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+html, body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
