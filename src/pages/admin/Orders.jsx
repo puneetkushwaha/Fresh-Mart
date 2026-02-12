@@ -48,13 +48,16 @@ const AdminOrders = () => {
     };
 
     const updateStatus = async (orderId, status) => {
+        console.log(`Requesting status update for ${orderId} to ${status}`);
         try {
-            await API.put(`/orders/${orderId}/status`, { status });
+            const { data } = await API.put(`/orders/${orderId}/status`, { status });
+            console.log('Update response:', data);
             fetchOrders();
             if (selectedOrder && selectedOrder._id === orderId) {
                 setSelectedOrder(prev => ({ ...prev, status }));
             }
         } catch (err) {
+            console.error('Status update failed:', err);
             alert('Failed to update status');
         }
     };
