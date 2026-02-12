@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Search, Edit2, Trash2, Filter, MoreVertical, Download, Loader2, X, Image as ImageIcon } from 'lucide-react';
+import { Plus, Search, Edit2, Trash2, Filter, MoreVertical, Download, Loader2, X, Image as ImageIcon, Upload } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import API from '../../api/apiClient';
 
@@ -14,6 +14,7 @@ const AdminProducts = () => {
     const [modalType, setModalType] = useState('add'); // 'add' or 'edit'
     const [currentProduct, setCurrentProduct] = useState(null);
     const [submitting, setSubmitting] = useState(false);
+    const [uploading, setUploading] = useState(false); // New state for image upload
 
     const [formData, setFormData] = useState({
         name: '',
@@ -90,6 +91,50 @@ const AdminProducts = () => {
             ...formData,
             [name]: type === 'checkbox' ? checked : value
         });
+    };
+
+    const uploadFileHandler = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const data = new FormData();
+        data.append('image', file);
+        setUploading(true);
+
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            };
+
+            const response = await API.post('/upload', data, config);
+
+            // Construct the full image URL based on the API base URL
+            const baseURL = API.defaults.baseURL?.replace('/api', '') || '';
+            // If using relative paths (e.g. in dev), handle accordingly. 
+            // Ideally, the backend should return the full URL or we construct it.
+            // Since uploadRoutes returns relative path `/uploads/filename`, we prepend the server origin.
+
+            // Getting the origin from the API base URL if it's absolute, otherwise use window.location.origin for relative API calls (proxy)
+            // But here API.defaults.baseURL is likely absolute from env vars or hardcoded
+
+            let imagePath = response.data.image;
+            let fullImageUrl = imagePath;
+
+            if (baseURL && !imagePath.startsWith('http')) {
+                // Remove trailing slash from baseURL if present
+                const cleanBaseURL = baseURL.endsWith('/') ? baseURL.slice(0, -1) : baseURL;
+                fullImageUrl = `${cleanBaseURL}${imagePath}`;
+            }
+
+            setFormData({ ...formData, image: fullImageUrl });
+            setUploading(false);
+        } catch (error) {
+            console.error(error);
+            setUploading(false);
+            alert('Image upload failed!');
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -191,8 +236,13 @@ const AdminProducts = () => {
                                 <tr key={product._id} className="group hover:bg-gray-50/30 transition-all">
                                     <td className="px-8 py-6">
                                         <div className="flex items-center space-x-4">
-                                            <div className="w-16 h-16 bg-gray-50 rounded-2xl overflow-hidden flex-shrink-0 border border-gray-100">
-                                                <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                            <div className="w-16 h-16 bg-gray-50 rounded-2xl overflow-hidden flex-shrink-0 border border-gray-100 relative">
+                                                <img
+                                                    src={product.image}
+                                                    alt={product.name}
+                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                    onError={(e) => { e.target.src = 'https://via.placeholder.com/150'; }}
+                                                />
                                             </div>
                                             <div>
                                                 <p className="font-black text-gray-900 line-clamp-1">{product.name}</p>
@@ -358,20 +408,41 @@ const AdminProducts = () => {
                                     </div>
 
                                     <div className="col-span-full space-y-2">
-                                        <label className="text-xs font-black text-gray-400 uppercase tracking-widest pl-1">Image URL</label>
+                                        <label className="text-xs font-black text-gray-400 uppercase tracking-widest pl-1">Image</label>
                                         <div className="relative group">
-                                            <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400">
-                                                <ImageIcon className="w-5 h-5" />
+                                            <div className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                                                {uploading ? (
+                                                    <Loader2 className="w-5 h-5 animate-spin text-primary-500" />
+                                                ) : (
+                                                    <Upload className="w-5 h-5" />
+                                                )}
                                             </div>
                                             <input
-                                                required
-                                                name="image"
-                                                value={formData.image}
-                                                onChange={handleInputChange}
-                                                className="w-full bg-gray-50 pl-14 pr-5 py-4 rounded-2xl border-2 border-transparent focus:border-primary-500 focus:bg-white transition-all outline-none font-bold text-gray-900"
-                                                placeholder="https://images.unsplash.com/..."
+                                                type="file"
+                                                accept="image/*"
+                                                onChange={uploadFileHandler}
+                                                className="w-full bg-gray-50 pl-14 pr-5 py-4 rounded-2xl border-2 border-transparent focus:border-primary-500 focus:bg-white transition-all outline-none font-bold text-gray-900 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-bold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 cursor-pointer"
                                             />
+                                            {/* Hidden input to store image URL if needed, although state holds it */}
+                                            <input type="hidden" name="image" value={formData.image} />
                                         </div>
+                                        {formData.image && (
+                                            <div className="mt-4 p-2 bg-gray-50 rounded-2xl border border-gray-100 inline-block relative group/preview">
+                                                <img
+                                                    src={formData.image}
+                                                    alt="Preview"
+                                                    className="h-24 w-24 object-cover rounded-xl shadow-sm"
+                                                    onError={(e) => { e.target.src = 'https://via.placeholder.com/150?text=Error'; }}
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setFormData({ ...formData, image: '' })}
+                                                    className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover/preview:opacity-100 transition-opacity shadow-lg"
+                                                >
+                                                    <X className="w-3 h-3" />
+                                                </button>
+                                            </div>
+                                        )}
                                     </div>
 
                                     <div className="col-span-full space-y-2">
@@ -415,7 +486,7 @@ const AdminProducts = () => {
                                     </button>
                                     <button
                                         type="submit"
-                                        disabled={submitting}
+                                        disabled={submitting || uploading}
                                         className="flex-[2] px-8 py-4 bg-primary-600 text-white rounded-2xl font-black text-sm hover:bg-primary-700 transition-all shadow-xl shadow-primary-100 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                                     >
                                         {submitting ? (
