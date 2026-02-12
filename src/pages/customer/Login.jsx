@@ -43,6 +43,12 @@ const Login = () => {
         <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center p-4">
             <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
                 <div className="text-center mb-8">
+                    {/* Security Disclaimer to prevent Phishing flags */}
+                    <div className="bg-amber-50 border border-amber-200 text-amber-800 px-4 py-3 rounded-xl text-xs font-medium mb-6 leading-relaxed">
+                        ⚠️ <strong>Demo Project Disclaimer:</strong> This is a student development project.
+                        Please do not enter real sensitive credentials.
+                    </div>
+
                     <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
                     <p className="text-gray-500 mt-2">Sign in to your account</p>
                     {error && <p className="text-red-500 mt-2 text-sm font-medium">{error}</p>}
