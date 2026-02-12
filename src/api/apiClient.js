@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'https://fresh-mart-backend.onrender.com/api',
+    baseURL: import.meta.env.VITE_API_URL || 'https://martify-backend.onrender.com/api',
 });
 
 // Add a request interceptor to add the auth token to every request
